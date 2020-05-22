@@ -1,0 +1,23 @@
+<span>
+  Enter no. of test cases
+<span>
+<input type="number" [(ngModel)]="noOfTestCases">
+<button (click)="setNoOfTestCases()">submit</button>
+<div *ngFor="let x of testCaseArr;let i=index;">
+  <h4>
+    Test case {{x}}
+  </h4>
+  <span>Enter no. of people</span>
+  <input type="number" name="{{x}}" (change)="setPeopleArr($event)">
+  <button (click)="setNoOfPeople()">submit</button>
+</div>
+<br><br>
+<h4 *ngIf="showSubmit">Enter their respective cost</h4>
+<div *ngFor="let x of peopleArr;let a=index;">
+    <input type="number" id="costId{{a}}" (change)="setCost($event)" name="{{x}}">
+</div>
+<button *ngIf="showSubmit" (click)="calculateCost()">submit</button>
+<br><br>
+<h2 *ngIf="showAns">
+  Minimum Cost : {{ans}} Rs
+</h2>
